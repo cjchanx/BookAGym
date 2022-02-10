@@ -14,7 +14,7 @@ In order to ensure a connection to a properly configured database, setup a datab
   },
   "AllowedHosts": "*",
   "Database": {
-        "ConnectionString": "Server = {hostname}; Port = 3306; Database = TradeDB; Uid = {username}; Pwd={password};"
+        "ConnectionString": "Server = {hostname}; Port = 3306; Database = GymDB; Uid = {username}; Pwd={password};"
   }
 }
 ```
