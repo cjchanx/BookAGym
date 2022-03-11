@@ -1,0 +1,33 @@
+﻿@page
+@model Webservice.Pages.HomeModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+<link rel="stylesheet" href="~/css/style.css">
+<link rel="stylesheet" href="~/css/site.css">
+
+
+
+<div class="card">
+    <div class="text-center">
+        <img src="https://cdn.dribbble.com/users/5655995/screenshots/14068633/dribble_yv.jpg"
+             height="200"
+             width="500" />
+        <h1 class="display-1">Welcome to BookaGym</h1>
+    </div>
+
+    <div class="card">
+        <div class="text-center" style="background-color: darkslategrey;">
+                    
+                <a asp-page="/Login">Login</a>
+                <br />
+                <a asp-page="/AdminTimesheet" class="nav-link text-dark font-italic bg-light">Signup</a>
+                <br />
+                <a asp-page="/AdminTimesheet" class="nav-link text-dark font-italic bg-light">Forum</a>
+                <br />
+                <a asp-page="/AdminTimesheet" class="nav-link text-dark font-italic bg-light">Book an appointment</a>
+                <br />
+
+        </div>
+    </div>
+</div>
