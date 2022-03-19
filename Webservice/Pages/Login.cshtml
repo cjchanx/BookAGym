@@ -1,0 +1,41 @@
+﻿@page
+@model Webservice.Pages.LoginModel
+@{
+}
+<head>
+    	<link rel="stylesheet" type="text/css" href="./css/util.css">
+	    <link rel="stylesheet" type="text/css" href="./css/main.css">
+</head>
+<body>
+
+    	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-t-85 p-b-20">
+				<form method="post" class="login100-form validate-form">
+					<span class="login100-form-title p-b-70">
+						Login
+					</span>
+
+					<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter username">
+						<input type="text" asp-for="Credential.Username" class="input100">
+						<span class="focus-input100" data-placeholder="Username"></span>
+                        <span class="text-danger" asp-validation-for="Credential.Username"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
+						<input type="password" asp-for="Credential.Password"  class="input100">
+						<span class="focus-input100" data-placeholder="Password"></span>
+                        <span class="text-danger" asp-validation-for="Credential.Password"></span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<input type="submit" class="login100-form-btn" value="Login">
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="./js/jquery-3.2.1.min.js"></script>
+	<script src="./js/main.js"></script>
+</body>
