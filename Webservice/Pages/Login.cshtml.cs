@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Webservice.ContextHelpers;
 using Webservice.Core;
+using Webservice.DatabaseHelper;
 namespace Webservice.Pages
 {
     public class LoginModel : PageModel
@@ -21,9 +22,20 @@ namespace Webservice.Pages
 
           public IActionResult OnPost()
           {
-                    return RedirectToPage("/ClientPage");
+            int type = UsersDB.ValidateLogin(_context.DBContext, Credential.Username, Credential.Password);
+            if (type == 1)
+            {
+                HttpContext.Session.SetString("AccountName", Credential.Username);
+                return RedirectToPage("/ClientPage");
+            }
+            else
+            {
+                HttpContext.Session.SetString("AccountName", "-1");
+                return RedirectToPage("/Login");
+            }
 
-           }
+
+        }
     }
 
     public class Credential

@@ -1,9 +1,5 @@
 ﻿namespace Webservice.Configuration
 {
-    /// <summary>
-    ///  REFERENCE : The following class is based on a class example from CPSC471F2021 Week 8 Lectures.
-    /// This class provides access to the variables in the appsettings.json file.
-    /// </summary>
     public class AppSettingsHelper
     {
 
