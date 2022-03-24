@@ -5,11 +5,7 @@ using System.Data;
 
 namespace Webservice.Core
 {
-    /// <summary>
-    /// REFERENCE : The following class is based on a class example from CPSC471F2021 Week 8 Lectures.
-    /// DBContext acts as an abstract class that can be derived from for
-    /// specific database providers eg. MySQL, MariaDB, MSSQL
-    /// </summary>
+
     public abstract class DBContext
     {
         #region Constructors

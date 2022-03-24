@@ -7,11 +7,7 @@ using System.Net;
 
 namespace Webservice.Core
 {
-    /// <summary>
-    ///  REFERENCE : The following class is from an class example from CPSC471F2021 Week 8 Lectures.
-    ///  StatusResponse is a class which stores the specified HTTP response of a request
-    ///  when it is called in Database Helper methods.
-    /// </summary>
+
     public class StatusResponse
     {
         #region Constructors
