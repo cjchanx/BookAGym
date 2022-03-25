@@ -4,7 +4,6 @@
 }
 
 <style>
-
     .BPcenter {
         margin: auto;
         color: white;
@@ -55,23 +54,37 @@
             Book Appointment
         </h3>
 
-        <label for="Date">Choose a Date:</label>
-        <select name="Date" id="Date">
-            <option value="March 18th">March 18th</option>
-            <option value="March 19th">March 19th</option>
-            <option value="March 20th">March 20th</option>
-            <option value="March 21st">March 21st</option>
-        </select>
-        <br />
+        <h6>Choose a date:</h6>
+        <tr>
+        <td><input ID="StartDate"  type="date" asp-for="DateUserSelected.date" class="form-control" asp-format="{0:yyyy-MM-ddTHH:mm}" /></td>
+        <span class="text-danger" asp-validation-for="DateUserSelected.date"></span>
+        <td><input type="submit" value="CheckDate"/></td>
+        </tr>
+
         <br />
 
         <label for="Time">Choose a Time:</label>
-        <select name="Time" id="Time">
-            <option value="9am">9am</option>
-            <option value="10am">10am</option>
-            <option value="11am">11am</option>
-            <option value="12pm">12pm</option>
-        </select>
+            <select name="Time" id="Time">
+            @{
+                int i = 1;
+                //int bookingAvailable = bookingsAvailable(, ,);
+                //if (bookingAvailable > 0)
+                //{
+                        for(int h = 0; h < 11; h++) {
+                            <option value=i>@i am</option>
+                        }
+                        for(int h = 12; h < 23; h++) {
+                            <option value=i>@i pm</option>
+                        }
+                //}
+                //else
+                ///{
+                    //"No available time for the date you have selected, Please choose another date"
+                //}
+
+            }
+
+            </select>
         <br />
         <br />
 
@@ -117,12 +130,20 @@
         </select>
         <br />
         <label for="New Appointment" id="New Apointment">New Appointment:</label>
-        <select name="New Appointment" id="New Appointment">
-            <option value="9am, March 18th">9am, March 18th</option>
-            <option value="9am March 19th">9am, March 19th</option>
-            <option value="12pm, March 20th">12pm, March 20th</option>
-            <option value="12pm, March 21st">12pm, March 21st</option>
+        <h6>Choose a date:</h6>
+        <input type="date" class="form-control" asp-format="{0:yyyy-MM-ddTHH:mm}" />
+
+        <br />
+
+        <label for="Time">Choose a Time:</label>
+        <select name="Time" id="Time">
+            <option value="9am">9am</option>
+            <option value="10am">10am</option>
+            <option value="11am">11am</option>
+            <option value="12pm">12pm</option>
         </select>
+        <br />
+        <br />
 
 
         <br />
@@ -136,8 +157,6 @@
 <script>function replace() {
         var ChangeChoice = document.getElementById("Change Choice");
         var ChangeChoiceValue = ChangeChoice.value;
-
-
         if (ChangeChoiceValue == "Change") {
             document.getElementById("SelectOption").style.display = "none";
             document.getElementById("Cancel").style.display = "none";
@@ -154,9 +173,7 @@
             document.getElementById("Cancel").style.display = "none";
             document.getElementById("Change").style.display = "none";
             document.getElementById("Book").style.display = "block";
-
         }
-
     }
     function back() {
         document.getElementById("SelectOption").style.display = "block";
@@ -164,3 +181,4 @@
         document.getElementById("Change").style.display = "none";
         document.getElementById("Book").style.display = "none";
     }</script>
+
