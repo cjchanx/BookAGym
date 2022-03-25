@@ -1,0 +1,35 @@
+﻿@page
+@model Webservice.Pages.SignUpModel
+@{
+}
+
+<div class="container border" style="padding:20px">
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="CreateAccount.UserName"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="CreateAccount.UserName" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="CreateAccount.UserName"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="CreateAccount.Password"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="CreateAccount.Password" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="CreateAccount.Password"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <input type="submit" class="btn btn-primary" value="Create"/>
+            </div>
+        </div>
+    </form>
+</div>
