@@ -22,7 +22,11 @@ The included appsettings.json file includes a connection to a temporary database
 
 # Dependencies
 Uses Libraries available from NuGet.
-- **MySQL.Data** 
+- **MySQL.Data**
+
+Testing Dependencies
+- **NUnit** : NuGet Package for Internal ASP.NET Backend Unit Testing
+- **Selenium** : Web Driver for GUI Based Unit Testing
 
 For internal dependencies, right click Dependencies for a particular project and add the required dependencies.
 
