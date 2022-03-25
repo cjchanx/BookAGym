@@ -21,11 +21,10 @@ namespace Webservice.Pages
         public void OnGet()
         {
         }
-        public void OnPost()
+        public IActionResult OnPost()
         {
-            int type = Booking_db.bookingsAvailable(_context.DBContext ,DateUserSelected.date);
-
-
+            //int avaialbleBooking = Booking_db.bookingsAvailable(_context.DBContext ,DateUserSelected.date);
+            return RedirectToAction("/Home");
         }
 
     }
