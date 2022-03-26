@@ -1,0 +1,63 @@
+﻿@page
+@model Webservice.Pages.CreateForumPostModel
+@{
+}
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BookAGym</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a asp-page="/ViewUsers" class="nav-link text-dark" asp-area="">View User</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-page="/AdminPage" class="nav-link text-dark" asp-area="">View Forum</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-page="/AdminPage" class="nav-link text-dark" asp-area="">Add Forum Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-page="/AdminPage" class="nav-link text-dark" asp-area=""></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+<h1>Add a Post</h1>
+
+<hr />
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="CreatePost.Header"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="CreatePost.Header" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="CreatePost.Header"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="CreatePost.Comment"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="CreatePost.Comment" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="CreatePost.Comment"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <input type="submit" class="btn btn-primary" value="Create"/>
+            </div>
+        </div>
+    </form>
