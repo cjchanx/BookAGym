@@ -19,8 +19,9 @@ namespace Webservice.Models
         {
 
         }
-        public Users(string username, string password)
+        public Users(int id, string username, string password)
         {
+            Id = id;
             UserName = username;
             Password = password;
 
@@ -32,6 +33,7 @@ namespace Webservice.Models
 
         public string UserName { get; set; }
         public string Password { get; set; }
+        public int Id { get; set; }
 
 
         #endregion

@@ -1,28 +1,267 @@
 ﻿@page
-@model Webservice.Pages.ClientPageModel
+@model Webservice.Pages.HomeModel
 @{
+    ViewData["Title"] = "Home Page";
 }
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BookAGym</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a asp-page="/ClientPage" class="nav-link text-dark" asp-area="">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a asp-page="/ClientPage" class="nav-link text-dark" asp-area="">Forum</a>
-                        </li>
-                        <li class="nav-item">
-                            <a asp-page="/ClientPage" class="nav-link text-dark" asp-area="">Book an appointment</a>
-                        </li>
-                    </ul>
-                </div>
+<link rel="stylesheet" href="~/css/style.css">
+<link rel="stylesheet" href="~/css/site.css">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+     <title>BookAGYM</title>
+
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/font-awesome.min.css">
+     <link rel="stylesheet" href="css/aos.css">
+
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href="css/tooplate-gymso-style.css">
+
+</head>
+@{
+		string name = "null";
+        name = HttpContext.Session.GetString("AccountName");
+        }
+<body data-spy="scroll" data-target="#navbarNav" data-offset="50">
+    <!-- MENU BAR -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+
+            <a class="navbar-brand" href="index.html">BookAGYM</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-lg-auto">
+                    <li class="nav-item">
+                        <a asp-page="/ClientPage" class="nav-link smoothScroll">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link smoothScroll">Book An Appointment</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a asp-page="/Announcements" class="nav-link smoothScroll">Announcements</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#schedule" class="nav-link smoothScroll">About Us</a>
+                    </li>
+                        <text class="btn custom-btn mt-3">@name</text>
+                    <li class="nav-item">
+                        
+                    </li>
+                </ul>
+
             </div>
-        </nav>
-    </header>
+
+        </div>
+    </nav>
+
+     <!-- HERO -->
+     <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
+
+            <div class="bg-overlay"></div>
+
+               <div class="container">
+                    <div class="row">
+
+                         <div class="col-lg-8 col-md-10 mx-auto col-12">
+                              <div class="hero-text mt-5 text-center">
+
+
+                                    <h1 class="text-white" data-aos="fade-up" data-aos-delay="200">Book your next workout!</h1>
+
+                                    <a href="#about" class="btn custom-btn bordered mt-3" data-aos="fade-up" data-aos-delay="300">Book</a>
+                                   
+                              </div>
+                         </div>
+
+                    </div>
+               </div>
+     </section>
+
+          <section class="feature" id="feature">
+        <div class="container">
+            <div class="row">
+
+                <div class="mr-lg-auto mt-3 col-lg-4 col-md-6 col-12">
+                     <div class="about-working-hours">
+                          <div>
+
+                                <h2 class="mb-4 text-white" data-aos="fade-up" data-aos-delay="100">Working hours</h2>
+
+                               <strong class="d-block" data-aos="fade-up" data-aos-delay="200">24h a day / 7 days a week!</strong>
+
+                               </div>
+                          </div>
+                     </div>
+                </div>
+
+            </div>
+    </section>
+
+         <!-- ABOUT -->
+     <section class="about section" id="about">
+               <div class="container">
+                    <div class="row">
+
+                            <div class="mt-lg-5 mb-lg-0 mb-4 col-lg-5 col-md-10 mx-auto col-12">
+                                <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300">Hello, we are BookAGYM</h2>
+
+                                <p data-aos="fade-up" data-aos-delay="400">Write stuff</p>
+
+                            </div>
+                    </div>
+               </div>
+     </section>
+
+          <!-- CLASS -->
+     <section class="class section" id="class">
+               <div class="container">
+                    <div class="row">
+
+                            <div class="col-lg-12 col-12 text-center mb-5">
+                                <h6 data-aos="fade-up">Get A Perfect Body</h6>
+
+                                <h2 data-aos="fade-up" data-aos-delay="200">Our Free Training Classes</h2>
+                             </div>
+
+                            <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="400">
+                                <div class="class-thumb">
+                                    <img src="images/class/yoga-class.jpg" class="img-fluid" alt="Class">
+
+                                    <div class="class-info">
+                                        <h3 class="mb-1">Yoga</h3>
+
+                                        <span><strong>Trained by</strong> - Chris</span>
+
+                                        <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-5 mt-lg-0 mt-md-0 col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="500">
+                                <div class="class-thumb">
+                                    <img src="images/class/crossfit-class.jpg" class="img-fluid" alt="Class">
+
+                                    <div class="class-info">
+                                        <h3 class="mb-1">Areobic</h3>
+
+                                        <span><strong>Trained by</strong> - Isaiah</span>
+
+
+                                        <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-5 mt-lg-0 col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="600">
+                                <div class="class-thumb">
+                                    <img src="images/class/cardio-class.jpg" class="img-fluid" alt="Class">
+
+                                    <div class="class-info">
+                                        <h3 class="mb-1">Cardio</h3>
+
+                                        <span><strong>Trained by</strong> - Sean</span>
+
+
+                                        <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                    </div>
+               </div>
+     </section>
+
+          <!-- CONTACT -->
+     <section class="contact section" id="contact">
+          <div class="container">
+               <div class="row">
+
+                    <div class="mx-auto mt-4 mt-lg-0 mt-md-0 col-lg-5 col-md-6 col-12">
+                        <h2 class="mb-4" data-aos="fade-up" data-aos-delay="200">Where you can <span>find us</span></h2>
+
+                        <p data-aos="fade-up" data-aos-delay="800"><i class="fa fa-map-marker mr-1"></i> Kinesiology Complex, 2500 University Dr NW, Calgary, AB T2N 1N4</p>
+<!-- How to change your own map point
+	1. Go to Google Maps
+	2. Click on your location point
+	3. Click "Share" and choose "Embed map" tab
+	4. Copy only URL and paste it within the src="" field below
+-->
+                        <div class="google-map" data-aos="fade-up" data-aos-delay="300">
+                           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2506.6826754711847!2d-114.13567383424572!3d51.07740757956678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53716f08b8ab64cb%3A0xeb45070dfb9cfc4a!2sUniversity%20of%20Calgary%20Active%20Living!5e0!3m2!1sen!2sca!4v1648166205179!5m2!1sen!2sca" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                    
+               </div>
+          </div>
+     </section>
+
+          <!-- FOOTER -->
+     <footer class="site-footer">
+          <div class="container">
+               <div class="row">
+
+                    <div class="ml-auto col-lg-4 col-md-5">
+                        <p class="copyright-text">Copyright &copy; 2022 BookAGYM ltd.
+                        
+                    </div>
+
+                    <div class="d-flex justify-content-center mx-auto col-lg-5 col-md-7 col-12">
+                        <p class="mr-4">
+                            <i class="fa fa-envelope-o mr-1"></i>
+                            <a href="#">contact@bookagym.com</a>
+                        </p>
+
+                        <p><i class="fa fa-phone mr-1"></i> (403) 999 9999</p>
+                    </div>
+                    
+               </div>
+          </div>
+     </footer>
+
+     
+    <!-- Modal -->
+    <div class="modal fade" id="membershipForm" tabindex="-1" role="dialog" aria-labelledby="membershipFormLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <h2 class="modal-title" id="membershipFormLabel">Membership Form</h2>
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+
+          <div class="modal-footer"></div>
+
+        </div>
+      </div>
+    </div>
+         <!-- SCRIPTS -->
+     <script src="js/jquery.min.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+     <script src="js/aos.js"></script>
+     <script src="js/smoothscroll.js"></script>
+     <script src="js/custom.js"></script>
+
+</body>
+</html>

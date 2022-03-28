@@ -1,5 +1,8 @@
 ﻿@page
-@model Webservice.Pages.AdminPageModel
+@using Webservice.DatabaseHelper
+@using Webservice.ContextHelpers
+@inject DatabaseContextHelper context
+@model Webservice.Pages.AdminAnnouncementModel
 @{
 }
     <header>
@@ -13,35 +16,45 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a asp-page="/AdminPage" class="nav-link text-dark" asp-area="">View Users</a>
+                            <a asp-page="/AdminHome" class="nav-link text-dark" asp-area="">View Users</a>
                         </li>
                         <li class="nav-item">
-                            <a asp-page="/ForumPage" class="nav-link text-dark" asp-area="">View Forum</a>
-                        </li>
-                        <li class="nav-item">
-                            <a asp-page="/AdminPage" class="nav-link text-dark" asp-area=""></a>
+                            <a asp-page="/AdminAnnouncement" class="nav-link text-dark" asp-area="">View Announcement</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-        <h1>View All Users</h1>
-
+        <h1>View All Announcement</h1>
+        <p>
+            <a asp-page="/AdminCreateAnnouncement">Create New Announcement</a>
+        </p>  
     <table class="table">
     <br/>
-    <p>
-    <a asp-page="/Create">Add Admin Account</a>
-    </p>
     <br/>
     <thead>
         <tr>
             <th>
-                Username
+                Id
             </th>
             <th>
-                Password
+                Header
             </th>
+            <th>
+                Comment
+            </th>
+            @foreach (var item in Announcement_db.AllAnnouncement(context.DBContext))
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Header</td>
+                        <td>@item.Comment</td>
+                        <td>
+                            <a asp-page="/AdminEditAnnouncement" asp-route-id="@item.Id">Manage</a>
+                        </td>
+                    </tr>
+                }
             <th></th>
         </tr>
     </thead>

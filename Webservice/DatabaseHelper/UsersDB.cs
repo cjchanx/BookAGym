@@ -43,7 +43,18 @@ namespace Webservice.DatabaseHelper
                     if (table.Rows.Count > 0)
                     {
                         Console.WriteLine("Found matching credentials!");
-                        return 1;
+                        foreach (DataRow row in table.Rows) {
+                            if (row["UserName"].ToString() == "Admin")
+                            {
+                                Console.WriteLine("Hello Admin!");
+                                return 2;
+                            }
+                            else {
+                                Console.WriteLine("Hello User!");
+                                return 1;
+                            }
+                        }
+                        return 0;
                     }
                     else {
                         Console.WriteLine("No users found!");
@@ -80,11 +91,15 @@ namespace Webservice.DatabaseHelper
                 List<Users> inst = new List<Users>();
                 foreach (DataRow row in table.Rows)
                 {
-                    inst.Add(new Users(
+                    if (row["UserName"].ToString() != "Admin")
+                    {
+                        inst.Add(new Users(
+                        id: int.Parse(row["Id"].ToString()),
                         username: row["UserName"].ToString(),
                         password: row["Password"].ToString()
                         )
                     );
+                    }
                 }
                 return inst;
             }
@@ -103,6 +118,64 @@ namespace Webservice.DatabaseHelper
                     parameters: new Dictionary<string, object> {
                         {"@username", username },
                         {"@password", password }
+                    },
+                    message: out string message
+                );
+                if (rowsAffected == -1)
+                    throw new Exception(message);
+                if (rowsAffected == 0)
+                    throw new Exception(message);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public static Users getAccount(int id, DBContext context)
+        {
+            try
+            {
+                DataTable table = context.ExecuteDataQueryCommand(
+                    commandText: "SELECT * FROM Users WHERE `Id` = @id",
+                    parameters: new Dictionary<string, object> {
+                        { "@id", id}
+                    },
+                    message: out string sql
+                    );
+                if (table == null)
+                    throw new Exception(sql);
+                Users users = null;
+                Console.WriteLine("work?");
+                foreach (DataRow dataRow in table.Rows)
+                {
+                    Console.WriteLine("hi2");
+                    users = new Users(
+                    id,
+                    username: dataRow["UserName"].ToString(),
+                    password: dataRow["Password"].ToString()
+                    );
+                }
+                return users;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return null;
+            }
+        }
+
+        public static void EditAccount(string username, string password, DBContext context)
+        {
+            Console.WriteLine("Updating " + username);
+            try
+            {
+                int rowsAffected = context.ExecuteNonQueryCommand(
+                    commandText: "UPDATE `Users` SET `Password`=@password WHERE `UserName`=@username",
+                    parameters: new Dictionary<string, object> {
+                        {"@username", username },
+                        {"@password", password },
                     },
                     message: out string message
                 );
