@@ -1,0 +1,185 @@
+@page
+@model Webservice.Pages.BookingPageModel
+@{
+}
+
+<style>
+    .BPcenter {
+        margin: auto;
+        color: white;
+        max-width: 50%;
+        height: auto;
+        text-align: center;
+    }
+</style>
+
+
+<div class="container" style="background-color: darkslategray">
+    <h1 style="color: white">
+        Booking Page
+    </h1>
+</div>
+
+
+
+
+
+
+
+<div class="BPcenter">
+    <div id="SelectOption" class="container" style="background-color: darkslategray; color: white; display: block">
+
+        <h3>
+            Manage Appointments
+        </h3>
+
+
+        <select name="ChangeType" id="Change Choice">
+            <option value="Change">Change</option>
+            <option value="Cancel">Cancel</option>
+            <option value="Book">Book</option>
+        </select>
+        <label for="ChangeType" id="Button Label">: Appointment</label>
+
+        <br />
+        <br />
+        <button type="submit" onclick="replace()">Confirm Selection</button>
+
+
+    </div>
+
+    <div id="Book" class="container" style="background-color: darkslategray; color: white; display: none">
+
+        <h3>
+            Book Appointment
+        </h3>
+
+        <h6>Choose a date:</h6>
+        <tr>
+        <td><input ID="StartDate"  type="date" asp-for="DateUserSelected.date" class="form-control" asp-format="{0:yyyy-MM-ddTHH:mm}" /></td>
+        <span class="text-danger" asp-validation-for="DateUserSelected.date"></span>
+        <td><input type="submit" value="CheckDate"/></td
+
+        </tr>
+
+        <br />
+
+        <label for="Time">Choose a Time:</label>
+            <select name="Time" id="Time">
+            @{
+                int i = 1;
+                //int bookingAvailable = bookingsAvailable(, ,);
+                //if (bookingAvailable > 0)
+                //{
+                        for(int h = 0; h < 11; h++) {
+                            <option value=i>@i am</option>
+                        }
+                        for(int h = 12; h < 23; h++) {
+                            <option value=i>@i pm</option>
+                        }
+                //}
+                //else
+                ///{
+                    //"No available time for the date you have selected, Please choose another date"
+                //}
+
+            }
+
+            </select>
+        <br />
+        <br />
+
+        <button>Confirm Booking</button>
+        <button type="submit" onclick="back()">Back</button>
+
+    </div>
+
+
+    <div id="Cancel" class="container" style="background-color: darkslategray; color: white; display: none">
+
+        <h3>
+            Cancel Appointment
+        </h3>
+
+        <label for="Choose Appointment" id="Choose Apointment">Choose Appointment:</label>
+        <select name="Choose Appointment" id="Choose Appointment">
+            <option value="9am, March 18th">9am, March 18th</option>
+            <option value="9am March 19th">9am, March 19th</option>
+            <option value="12pm, March 20th">12pm, March 20th</option>
+            <option value="12pm, March 21st">12pm, March 21st</option>
+        </select>
+
+        <br />
+        <br />
+        <button>Confirm Cancelation</button>
+        <button type="submit" onclick="back()">Back</button>
+
+    </div>
+
+    <div id="Change" class="container" style="background-color: darkslategray; color: white; display: none">
+
+        <h3>
+            Change Appointment
+        </h3>
+
+        <label for="Choose Appointment" id="Choose Apointment">Choose Appointment:</label>
+        <select name="Choose Appointment" id="Choose Appointment">
+            <option value="9am, March 18th">9am, March 18th</option>
+            <option value="9am March 19th">9am, March 19th</option>
+            <option value="12pm, March 20th">12pm, March 20th</option>
+            <option value="12pm, March 21st">12pm, March 21st</option>
+        </select>
+        <br />
+        <label for="New Appointment" id="New Apointment">New Appointment:</label>
+        <h6>Choose a date:</h6>
+        <input type="date" class="form-control" asp-format="{0:yyyy-MM-ddTHH:mm}" />
+
+        <br />
+
+        <label for="Time">Choose a Time:</label>
+        <select name="Time" id="Time">
+            <option value="9am">9am</option>
+            <option value="10am">10am</option>
+            <option value="11am">11am</option>
+            <option value="12pm">12pm</option>
+        </select>
+        <br />
+        <br />
+
+
+        <br />
+        <br />
+        <button>Confirm Change</button>
+        <button type="submit" onclick="back()">Back</button>
+
+    </div>
+</div>
+
+<script>function replace() {
+        var ChangeChoice = document.getElementById("Change Choice");
+        var ChangeChoiceValue = ChangeChoice.value;
+        if (ChangeChoiceValue == "Change") {
+            document.getElementById("SelectOption").style.display = "none";
+            document.getElementById("Cancel").style.display = "none";
+            document.getElementById("Change").style.display = "block";
+            document.getElementById("Book").style.display = "none";
+        }
+        else if (ChangeChoiceValue == "Cancel") {
+            document.getElementById("SelectOption").style.display = "none";
+            document.getElementById("Cancel").style.display = "block";
+            document.getElementById("Change").style.display = "none";
+            document.getElementById("Book").style.display = "none";
+        } else if (ChangeChoiceValue == "Book") {
+            document.getElementById("SelectOption").style.display = "none";
+            document.getElementById("Cancel").style.display = "none";
+            document.getElementById("Change").style.display = "none";
+            document.getElementById("Book").style.display = "block";
+        }
+    }
+    function back() {
+        document.getElementById("SelectOption").style.display = "block";
+        document.getElementById("Cancel").style.display = "none";
+        document.getElementById("Change").style.display = "none";
+        document.getElementById("Book").style.display = "none";
+    }</script>
+
