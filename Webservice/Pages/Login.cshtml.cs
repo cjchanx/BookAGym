@@ -28,6 +28,10 @@ namespace Webservice.Pages
                 HttpContext.Session.SetString("AccountName", Credential.Username);
                 return RedirectToPage("/ClientPage");
             }
+            else if (type == 2) {
+                HttpContext.Session.SetString("AccountName", Credential.Username);
+                return RedirectToPage("/AdminHome");
+            }
             else
             {
                 HttpContext.Session.SetString("AccountName", "-1");

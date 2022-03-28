@@ -1,0 +1,59 @@
+﻿@page
+@using Webservice.DatabaseHelper
+@using Webservice.ContextHelpers
+@inject DatabaseContextHelper context
+@model Webservice.Pages.AdminPageModel
+@{
+}
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BookAGym</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a asp-page="/AdminHome" class="nav-link text-dark" asp-area="">View Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-page="/AdminAnnouncement" class="nav-link text-dark" asp-area="">View Announcement</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+        <h1>View All Users</h1>
+
+    <table class="table">
+    <br/>
+    <br/>
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Username
+            </th>
+            <th>
+                Password
+            </th>
+            @foreach (var item in UsersDB.AllAccounts(context.DBContext))
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.UserName</td>
+                        <td>@item.Password</td>
+                        <td>
+                            <a asp-page="/AdminEditAccounts" asp-route-id="@item.Id">Manage</a>
+                        </td>
+                    </tr>
+                }
+            <th></th>
+        </tr>
+    </thead>
+</table>
