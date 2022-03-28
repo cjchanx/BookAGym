@@ -15,7 +15,10 @@ namespace Webservice.Models
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
+        public Users()
+        {
 
+        }
         public Users(string username, string password)
         {
             UserName = username;

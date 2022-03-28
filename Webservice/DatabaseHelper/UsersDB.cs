@@ -59,7 +59,42 @@ namespace Webservice.DatabaseHelper
             }
         }
 
-        public static void AddAccount(string username, string password,  DBContext context)
+        public static List<Users> AllAccounts(DBContext context)
+        {
+            try
+            {
+                // Attempt to get from the database
+                DataTable table = context.ExecuteDataQueryCommand(
+                    commandText: "SELECT * FROM Users",
+                    parameters: new Dictionary<string, object>
+                    {
+
+                    },
+                    message: out string message
+                );
+
+                if (table == null)
+                    throw new Exception(message);
+
+                // Parse
+                List<Users> inst = new List<Users>();
+                foreach (DataRow row in table.Rows)
+                {
+                    inst.Add(new Users(
+                        username: row["UserName"].ToString(),
+                        password: row["Password"].ToString()
+                        )
+                    );
+                }
+                return inst;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+    public static void AddAccount(string username, string password,  DBContext context)
         {
             try
             {
