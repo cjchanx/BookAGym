@@ -7,12 +7,15 @@ using Webservice.Core;
 using Webservice.Models;
 using System.Data;
 using Webservice.DatabaseHelper;
-
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Webservice.DatabaseHelper
 {
     public class Booking_db
     {
+
+        public static int max_bookings = 0;
 
         /* Utility Functions */
         // Function utilizes getBookingsByHour to return the number of available bookings
@@ -31,20 +34,19 @@ namespace Webservice.DatabaseHelper
             {
                 filled = bookings.Count;
             }
-            else {
-                Console.WriteLine("Im heeere");
+
+            if (max_bookings == 0) {
+                // Get the current maximum bookings per hour
+                // based on the program configuration
+                max_bookings = DatabaseHelper
+                     .ConfigurationHelper_db
+                     .getClientConfiguration(context)
+                     .MAX_BOOKINGS_PER_HOUR;
             }
             
+           // Compare and return difference
+           return max_bookings - filled;
 
-            // Get the current maximum bookings per hour
-            // based on the program configuration
-            int max_bookings = DatabaseHelper
-                .ConfigurationHelper_db
-                .getClientConfiguration(context)
-                .MAX_BOOKINGS_PER_HOUR;
-
-            // Compare and return difference
-            return max_bookings - filled;
         }
 
 
@@ -57,28 +59,23 @@ namespace Webservice.DatabaseHelper
         // @returns List<Booking>
         public static List<Booking> getBookingsByHour(DateTime date, DBContext context)
         {
-            // Initialize helper variables for tracking time
-            DateTime start = date;
-            DateTime end = date.AddHours(1);
+
 
             // Attempt query
             try
             {
                 // Attempt to get from the database
                 DataTable table = context.ExecuteDataQueryCommand(
-                    commandText: "SELECT * FROM `Bookings` WHERE `booktime` >= @start AND `booktime` < @end",
+                    commandText: "SELECT * FROM `Bookings` WHERE `booktime` = @start",
                     parameters: new Dictionary<string, object>
                     {
-                        {"@start", date.ToString("yyyy/MM/dd HH:mm:ss")},
-                        {"@end", date.AddHours(1).ToString("yyyy/MM/dd HH:mm:ss")}
+                        {"@start", date.ToString("yyyy/MM/dd HH:mm:ss")}
                     },
                     message: out string message
                 );
 
                 if (table == null) {
-                    Console.WriteLine("Before");
                     Console.WriteLine(message);
-                    Console.WriteLine("I'm just a baby");
                     return null;
                 }
                     
@@ -133,10 +130,12 @@ namespace Webservice.DatabaseHelper
                     throw new Exception(message);
                 if (rowsAffected == 0)
                 {
-                    Console.WriteLine("No booking with given id.");
+                         Console.WriteLine("No booking with given id.");
                 }
-                else
-                    Console.WriteLine("Sucessfully deleted.");
+                else {
+                         Console.WriteLine("Sucessfully deleted.");
+                }
+
                 return rowsAffected;
             }
             catch (Exception ex)
@@ -164,16 +163,18 @@ namespace Webservice.DatabaseHelper
                     },
                     message: out string message
                 );
-                if (rowsAffected == -1 || rowsAffected == 0)
-                    Console.WriteLine(message);
+                if (rowsAffected == -1 || rowsAffected == 0) {
+                        Console.WriteLine(message);
+                }
+
 
                 // Return
 
-                Console.WriteLine("Booking updated successfully");
+               Console.WriteLine("Booking updated successfully");
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Booking not updated");
+               Console.WriteLine("Booking not updated");
             }
         }
 
@@ -201,12 +202,14 @@ namespace Webservice.DatabaseHelper
                     },
                     message: out string message
                 );
-                if (rowsAffected == -1)
-                    Console.WriteLine(message);
+                if (rowsAffected == -1) {
+                       Console.WriteLine(message);
+                }
+
 
                 // Return
 
-                Console.WriteLine("Booking added successfully");
+                  Console.WriteLine("Booking added successfully");
             }
             catch {
                 Console.WriteLine("Booking adding failed");
