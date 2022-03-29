@@ -7,6 +7,7 @@ namespace Webservice.Pages
     {
         public void OnGet()
         {
+            HttpContext.Session.SetString("SelectedDate", DateTime.Today.ToString());
         }
     }
 }

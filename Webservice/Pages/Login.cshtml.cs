@@ -18,6 +18,7 @@ namespace Webservice.Pages
         public void OnGet()
         {
             HttpContext.Session.SetString("AccountName", "-1");
+            HttpContext.Session.SetString("SelectedDate", DateTime.Today.ToString());
         }
 
           public IActionResult OnPost()

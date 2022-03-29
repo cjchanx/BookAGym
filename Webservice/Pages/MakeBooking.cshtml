@@ -1,9 +1,5 @@
-@page
-
-@using Webservice.ContextHelpers
-@using Webservice.DatabaseHelper
-@inject DatabaseContextHelper context
-@model Webservice.Models.Booking
+﻿@page
+@model Webservice.Pages.MakeBookingModel
 @{
 }
 <link rel="stylesheet" href="~/css/style.css">
@@ -77,44 +73,26 @@
         <br />
         <br />
         <br />
+        <h2>
+            Make Bookings
+        </h2>
+            
         <h3>
-            Current Bookings
+            Select Date
         </h3>
-            <table class="table">
-    <thead>
-        <tr>
-            <th>
-                <a >ID</a>
-            </th>
-            <th>
-                <a >Username</a>
-            </th>
-            <th>
-                <a >TimeBooked</a>
-            </th>
-
-                @foreach(var item in Booking_db.getCollection(HttpContext.Session.GetString("AccountName"), context.DBContext))
-                {
-                    <tr>
-                        <td>@item.Id</td>
-                        <td>@item.Username</td>
-                        <td>@item.TimeBooked</td>
-                        <td>
-                            <a type="submit" asp-action="Cancel"  asp-controller="BookingPageModel" asp-route-id="@item.Id" >Cancel</a>
-                        </td>
-                    </tr>
-                }
-        </tr>
-        </thead>
-    <tbody>
-    </tbody>
-</table>
-        <br />
-        <br />
+        
+       <form asp-page-handler="DateChange">
+            <input ID="StartDate"  type="date" asp-for="DateUserSelected.Date" class="form-control" asp-format="{0:yyyy-MM-dd}" onchange="this.form.submit();"/>
+        </form>
         <h3>
-            Manage Booking
+            Select Time
         </h3>
-            <a asp-page="/MakeBooking" class="nav-link smoothScroll">Book</a>
-            <a asp-page="/ChangeBooking" class="nav-link smoothScroll">Change</a>
+        <form method="post">
+        <select asp-for="DateUserSelected.Time" asp-items="Model.Times"></select> 
+        
+            <input type="submit" class="login100-form-btn" value="Book">
+        </form>
+       
     </body>
 </html>
+
