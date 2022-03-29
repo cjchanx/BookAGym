@@ -1,9 +1,5 @@
-@page
-
-@using Webservice.ContextHelpers
-@using Webservice.DatabaseHelper
-@inject DatabaseContextHelper context
-@model Webservice.Models.Booking
+﻿@page
+@model Webservice.Pages.ChangeBookingModel
 @{
 }
 <link rel="stylesheet" href="~/css/style.css">
@@ -77,44 +73,32 @@
         <br />
         <br />
         <br />
-        <h3>
-            Current Bookings
-        </h3>
-            <table class="table">
-    <thead>
-        <tr>
-            <th>
-                <a >ID</a>
-            </th>
-            <th>
-                <a >Username</a>
-            </th>
-            <th>
-                <a >TimeBooked</a>
-            </th>
+        <h2>
+            Change Bookings
+        </h2>
 
-                @foreach(var item in Booking_db.getCollection(HttpContext.Session.GetString("AccountName"), context.DBContext))
-                {
-                    <tr>
-                        <td>@item.Id</td>
-                        <td>@item.Username</td>
-                        <td>@item.TimeBooked</td>
-                        <td>
-                            <a type="submit" asp-action="Cancel"  asp-controller="BookingPageModel" asp-route-id="@item.Id" >Cancel</a>
-                        </td>
-                    </tr>
-                }
-        </tr>
-        </thead>
-    <tbody>
-    </tbody>
-</table>
-        <br />
-        <br />
+
         <h3>
-            Manage Booking
+            Select Updated Date
         </h3>
-            <a asp-page="/MakeBooking" class="nav-link smoothScroll">Book</a>
-            <a asp-page="/ChangeBooking" class="nav-link smoothScroll">Change</a>
+        
+       <form asp-page-handler="DateChange">
+            <input ID="StartDate"  type="date" asp-for="DateUserChange.NewDate" class="form-control" asp-format="{0:yyyy-MM-dd}" onchange="this.form.submit();"/>
+        </form>
+        <h3>
+            Select Updated Time
+        </h3>
+        <form method="post">
+            
+        <select asp-for="DateUserChange.NewTime" asp-items="Model.Times"></select> 
+            <br />
+       <h3>
+            Select Booking To Change
+        </h3>
+
+            <select asp-for="DateUserChange.CurrentSelection" asp-items="Model.Bookings"></select> 
+            <input type="submit" class="login100-form-btn" value="Update">
+        </form>
+       
     </body>
 </html>

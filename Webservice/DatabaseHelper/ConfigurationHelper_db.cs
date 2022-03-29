@@ -20,7 +20,7 @@ namespace Webservice.DatabaseHelper
         // inside the database
         // @returns - Configuration object on success
         // @returns - null configuration object on failure to access row
-        public static Models.Config getClientConfiguration(DBContext context, out StatusResponse response)
+        public static Models.Config getClientConfiguration(DBContext context)
         {
             try
             {
@@ -48,12 +48,11 @@ namespace Webservice.DatabaseHelper
                 }
 
                 // Return
-                response = new StatusResponse("Accounts successfully retreived.");
+                Console.WriteLine("Accounts successfully retreived.");
                 return inst;
             }
             catch (Exception ex)
             {
-                response = new StatusResponse(ex);
                 return null;
             }
         }

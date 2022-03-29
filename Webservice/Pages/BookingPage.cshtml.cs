@@ -1,38 +1,34 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Webservice.ContextHelpers;
-using Webservice.Core;
 using Webservice.DatabaseHelper;
-using Webservice.Helpers;
-
+using Webservice.Models;
 namespace Webservice.Pages
 {
 
 
-    public class BookingPageModel : PageModel
+    public class BookingPageModel : Controller
     {
         private readonly DatabaseContextHelper _context;
         public BookingPageModel(DatabaseContextHelper context)
         {
             _context = context;
         }
-        public DateUserSelected DateUserSelected { get; set; }
 
         public void OnGet()
         {
+            HttpContext.Session.SetString("SelectedDate", DateTime.Today.ToString());
         }
-        public IActionResult OnPost()
+
+        public IActionResult Cancel(int id)
         {
-            //int avaialbleBooking = Booking_db.bookingsAvailable(_context.DBContext ,DateUserSelected.date);
-            return RedirectToAction("/Home");
+            Booking_db.ForceDelete(_context.DBContext, id);
+            return RedirectToPage("/BookingPage");
         }
 
+
     }
 
-    public class DateUserSelected
-    {
-
-        [System.ComponentModel.DataAnnotations.Required]
-        public DateTime date { get; set; }
-    }
 }
