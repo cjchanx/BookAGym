@@ -5,8 +5,16 @@ namespace Webservice.Pages
 {
     public class AdminAnnouncementModel : PageModel
     {
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            if (HttpContext.Session.GetString("AccountName") != "Admin")
+            {
+                Console.WriteLine("Not logged in");
+                return RedirectToPage("/Home");
+            }
+            else {
+                return null;
+            }
         }
     }
 }

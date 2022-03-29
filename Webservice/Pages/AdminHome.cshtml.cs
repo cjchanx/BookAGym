@@ -20,8 +20,17 @@ namespace Webservice.Pages
         {
             _context = context;
         }
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            if (HttpContext.Session.GetString("AccountName") != "Admin")
+            {
+                Console.WriteLine("Not logged in");
+                return RedirectToPage("/Home");
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public List<Users> ViewUsers()
