@@ -17,9 +17,17 @@ namespace Webservice.Pages
             _context = context;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
             HttpContext.Session.SetString("SelectedDate", DateTime.Today.ToString());
+            if (HttpContext.Session.GetString("AccountName") == "-1")
+            {
+                return RedirectToPage("/Login");
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public IActionResult Cancel(int id)

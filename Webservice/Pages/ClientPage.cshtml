@@ -1,5 +1,5 @@
 ﻿@page
-@model Webservice.Pages.HomeModel
+@model Webservice.Pages.ClientPageModel
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -60,7 +60,15 @@
                     <li class="nav-item">
                         <a href="#schedule" class="nav-link smoothScroll">About Us</a>
                     </li>
-                        <text class="btn custom-btn mt-3">@name</text>
+
+                    <li class="nav-item">
+                        <a href="#name" class="nav-link smoothScroll">@name</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a asp-page="/Home" class="nav-link smoothScroll">Logout</a>
+                    </li>
+
                     <li class="nav-item">
                         
                     </li>
@@ -85,7 +93,7 @@
 
                                     <h1 class="text-white" data-aos="fade-up" data-aos-delay="200">Book your next workout!</h1>
 
-                                    <a href="#about" class="btn custom-btn bordered mt-3" data-aos="fade-up" data-aos-delay="300">Book</a>
+                                    <a asp-page="BookingPage" class="btn custom-btn bordered mt-3" data-aos="fade-up" data-aos-delay="300">Book</a>
                                    
                               </div>
                          </div>
