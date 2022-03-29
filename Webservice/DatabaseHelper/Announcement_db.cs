@@ -134,5 +134,42 @@ namespace Webservice.DatabaseHelper
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public static int ForceDelete(DBContext context, int id = -1)
+        {
+            if (id == -1)
+            {
+                throw new Exception("Invalid ID announcement.");
+            }
+
+            try
+            {
+                // Attempt to add to database
+                int rowsAffected = context.ExecuteNonQueryCommand(
+                    commandText: "DELETE FROM `Announcement` WHERE `Id`=@Id",
+                    parameters: new Dictionary<string, object> {
+                        {"@Id", id },
+                    },
+                    message: out string message
+                );
+                if (rowsAffected == -1)
+                    throw new Exception(message);
+                if (rowsAffected == 0)
+                {
+                    Console.WriteLine("No announcement with given id.");
+                }
+                else
+                {
+                    Console.WriteLine("Sucessfully deleted.");
+                }
+
+                return rowsAffected;
+            }
+            catch (Exception ex)
+            {
+
+                return -1;
+            }
+        }
     }
 }

@@ -54,6 +54,9 @@
                         <td>@item.Header</td>
                         <td>@item.Comment</td>
                         <td>
+                            <a type="submit" asp-action="Delete"  asp-controller="AdminAnnouncementModel" asp-route-id="@item.Id" >Delete</a>
+                        </td>
+                        <td>
                             <a asp-page="/AdminEditAnnouncement" asp-route-id="@item.Id">Manage</a>
                         </td>
                     </tr>
