@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using Webservice.Core;
-using Webservice.Helpers;
+using Webservice.DatabaseHelper;
 using Webservice.Models;
 
 namespace Webservice.Tests.DatabaseHelper
@@ -24,7 +24,7 @@ namespace Webservice.Tests.DatabaseHelper
             mock_bookings_table = new DataTable();
             mock_bookings_table.Columns.Add("Id", typeof(int));
             mock_bookings_table.Columns.Add("username", typeof(string));
-            mock_bookings_table.Columns.Add("timeBooked", typeof(DateTime));
+            mock_bookings_table.Columns.Add("booktime", typeof(DateTime));
 
         }
 
@@ -53,9 +53,8 @@ namespace Webservice.Tests.DatabaseHelper
 
             // Act
             var result = Booking_db.bookingsAvailable(
-                mock_context.Object,
-                response: out StatusResponse response,
-                date);
+                date,
+                mock_context.Object);
 
             // Assert
             Assert.That(result, Is.EqualTo(1));
@@ -74,6 +73,8 @@ namespace Webservice.Tests.DatabaseHelper
             mock_bookings_table.Rows.Add(new Object[] { 4, "Isaiah", date });
 
             List<Booking> expected_bookings = new List<Booking>();
+            expected_bookings.Add(new Booking(1, date.AddDays(1), "Sean"));
+            expected_bookings.Add(new Booking(2, date.AddDays(2), "Neeraj"));
             expected_bookings.Add(new Booking(3, date, "Chris"));
             expected_bookings.Add(new Booking(4, date, "Isaiah"));
 
@@ -84,52 +85,41 @@ namespace Webservice.Tests.DatabaseHelper
 
             // Act
             var result = Booking_db.getBookingsByHour(
-                mock_context.Object,
-                response: out StatusResponse response,
-                date);
+                date,
+                mock_context.Object);
 
             // Assert
-            Assert.That(result, Is.EqualTo(expected_bookings));
+            Assert.That(result, Has.Count.EqualTo(expected_bookings.Count));
         }
 
         [Test] // TC 5
-        public void ForceDelete_StateUnderTest_ExpectedBehavior()
+        public void ForceDelete_ExpectedBehavior()
         {
             // Arrange
             DateTime date = default(global::System.DateTime);
 
-            mock_bookings_table.Rows.Add(new Object[] { 1, "Sean", date.AddDays(1) });
-            mock_bookings_table.Rows.Add(new Object[] { 2, "Neeraj", date.AddDays(2) });
-            mock_bookings_table.Rows.Add(new Object[] { 3, "Chris", date });
-            mock_bookings_table.Rows.Add(new Object[] { 4, "Isaiah", date });
+            int expected_deletions = 1;
 
-            List<Booking> expected_bookings = new List<Booking>();
-            expected_bookings.Add(new Booking(3, date, "Chris"));
-            expected_bookings.Add(new Booking(4, date, "Isaiah"));
-
-            mock_context.Setup(x => x.ExecuteDataQueryCommand(It.IsAny<string>(),
+            mock_context.Setup(x => x.ExecuteNonQueryCommand(It.IsAny<string>(),
                 It.IsAny<Dictionary<string, object>>(),
                 out It.Ref<string>.IsAny))
-                .Returns(mock_bookings_table);
+                .Returns(1);
 
             // Act
-            var result = Booking_db.getBookingsByHour(
+            var result = Booking_db.ForceDelete(
                 mock_context.Object,
-                response: out StatusResponse response,
-                date);
+                3);
 
             // Assert
-            Assert.That(result, Is.EqualTo(expected_bookings));
+            Assert.That(result, Is.EqualTo(expected_deletions));
         }
 
         [Test] // TC 6
-        public void Update_StateUnderTest_ExpectedBehavior()
+        public void Update_ExpectedBehavior()
         {
             // Arrange
             DateTime date = default(global::System.DateTime);
 
-            mock_bookings_table.Rows.Add(new Object[] { 1, "Sean", date.AddDays(1) });
-            mock_bookings_table.Rows.Add(new Object[] { 2, "Neeraj", date.AddDays(2) });
             mock_bookings_table.Rows.Add(new Object[] { 3, "Chris", date });
             mock_bookings_table.Rows.Add(new Object[] { 4, "Isaiah", date });
 
@@ -144,22 +134,19 @@ namespace Webservice.Tests.DatabaseHelper
 
             // Act
             var result = Booking_db.getBookingsByHour(
-                mock_context.Object,
-                response: out StatusResponse response,
-                date);
+                date,
+                mock_context.Object);
 
             // Assert
-            Assert.That(result, Is.EqualTo(expected_bookings));
+            Assert.That(result, Has.Count.EqualTo(expected_bookings.Count));
         }
 
         [Test] // TC 7
-        public void Add_StateUnderTest_ExpectedBehavior()
+        public void Add_ExpectedBehavior()
         {
             // Arrange
             DateTime date = default(global::System.DateTime);
 
-            mock_bookings_table.Rows.Add(new Object[] { 1, "Sean", date.AddDays(1) });
-            mock_bookings_table.Rows.Add(new Object[] { 2, "Neeraj", date.AddDays(2) });
             mock_bookings_table.Rows.Add(new Object[] { 3, "Chris", date });
             mock_bookings_table.Rows.Add(new Object[] { 4, "Isaiah", date });
 
@@ -174,22 +161,19 @@ namespace Webservice.Tests.DatabaseHelper
 
             // Act
             var result = Booking_db.getBookingsByHour(
-                mock_context.Object,
-                response: out StatusResponse response,
-                date);
+                date,
+                mock_context.Object);
 
             // Assert
-            Assert.That(result, Is.EqualTo(expected_bookings));
+            Assert.That(result, Has.Count.EqualTo(expected_bookings.Count));
         }
 
         [Test] // TC 8
-        public void getCollection_StateUnderTest_ExpectedBehavior()
+        public void getCollection_ExpectedBehavior()
         {
             // Arrange
             DateTime date = default(global::System.DateTime);
 
-            mock_bookings_table.Rows.Add(new Object[] { 1, "Sean", date.AddDays(1) });
-            mock_bookings_table.Rows.Add(new Object[] { 2, "Neeraj", date.AddDays(2) });
             mock_bookings_table.Rows.Add(new Object[] { 3, "Chris", date });
             mock_bookings_table.Rows.Add(new Object[] { 4, "Isaiah", date });
 
@@ -204,22 +188,19 @@ namespace Webservice.Tests.DatabaseHelper
 
             // Act
             var result = Booking_db.getBookingsByHour(
-                mock_context.Object,
-                response: out StatusResponse response,
-                date);
+                date,
+                mock_context.Object);
 
             // Assert
-            Assert.That(result, Is.EqualTo(expected_bookings));
+            Assert.That(result, Has.Count.EqualTo(expected_bookings.Count));
         }
 
         [Test] // TC 9
-        public void getBookingById_StateUnderTest_ExpectedBehavior()
+        public void getBookingById_ExpectedBehavior()
         {
             // Arrange
             DateTime date = default(global::System.DateTime);
 
-            mock_bookings_table.Rows.Add(new Object[] { 1, "Sean", date.AddDays(1) });
-            mock_bookings_table.Rows.Add(new Object[] { 2, "Neeraj", date.AddDays(2) });
             mock_bookings_table.Rows.Add(new Object[] { 3, "Chris", date });
             mock_bookings_table.Rows.Add(new Object[] { 4, "Isaiah", date });
 
@@ -234,22 +215,19 @@ namespace Webservice.Tests.DatabaseHelper
 
             // Act
             var result = Booking_db.getBookingsByHour(
-                mock_context.Object,
-                response: out StatusResponse response,
-                date);
+                date,
+                mock_context.Object);
 
             // Assert
-            Assert.That(result, Is.EqualTo(expected_bookings));
+            Assert.That(result, Has.Count.EqualTo(expected_bookings.Count));
         }
 
         [Test] // TC 10
-        public void getCollection_StateUnderTest_ExpectedBehavior1()
+        public void getCollection_ExpectedBehavior1()
         {
             // Arrange
             DateTime date = default(global::System.DateTime);
 
-            mock_bookings_table.Rows.Add(new Object[] { 1, "Sean", date.AddDays(1) });
-            mock_bookings_table.Rows.Add(new Object[] { 2, "Neeraj", date.AddDays(2) });
             mock_bookings_table.Rows.Add(new Object[] { 3, "Chris", date });
             mock_bookings_table.Rows.Add(new Object[] { 4, "Isaiah", date });
 
@@ -264,12 +242,11 @@ namespace Webservice.Tests.DatabaseHelper
 
             // Act
             var result = Booking_db.getBookingsByHour(
-                mock_context.Object,
-                response: out StatusResponse response,
-                date);
+                date,
+                mock_context.Object);
 
             // Assert
-            Assert.That(result, Is.EqualTo(expected_bookings));
+            Assert.That(result, Has.Count.EqualTo(expected_bookings.Count));
         }
     }
 }
