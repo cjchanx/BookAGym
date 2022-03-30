@@ -28,7 +28,7 @@ public class UserTests
     }
 
 
-    [Test]
+    [Test] // TC 2
     public void TestAdminExists()
     {
         // Setup
