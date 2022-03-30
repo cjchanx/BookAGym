@@ -240,7 +240,7 @@ namespace Webservice.DatabaseHelper
                 {
                     inst.Add(new Booking(
                         id: int.Parse(row["Id"].ToString()),
-                        time: DateTime.Parse(row["timeBooked"].ToString()),
+                        time: DateTime.Parse(row["booktime"].ToString()),
                         name: row["username"].ToString()
                         )
                     );
@@ -280,7 +280,7 @@ namespace Webservice.DatabaseHelper
                 {
                     inst.Add(new Booking(
                         id: int.Parse(row["Id"].ToString()),
-                        time: DateTime.Parse(row["timeBooked"].ToString()),
+                        time: DateTime.Parse(row["booktime"].ToString()),
                         name: row["username"].ToString()
                         )
                     );
@@ -320,7 +320,7 @@ namespace Webservice.DatabaseHelper
                 {
                     inst.Add(new Booking(
                         id: int.Parse(row["Id"].ToString()),
-                        time: DateTime.Parse(row["timeBooked"].ToString()),
+                        time: DateTime.Parse(row["booktime"].ToString()),
                         name: row["name"].ToString()
                         )
                     );

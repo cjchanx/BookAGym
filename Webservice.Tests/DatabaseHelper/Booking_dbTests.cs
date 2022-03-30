@@ -142,71 +142,15 @@ namespace Webservice.Tests.DatabaseHelper
         }
 
         [Test] // TC 7
-        public void Add_ExpectedBehavior()
-        {
-            // Arrange
-            DateTime date = default(global::System.DateTime);
-
-            mock_bookings_table.Rows.Add(new Object[] { 3, "Chris", date });
-            mock_bookings_table.Rows.Add(new Object[] { 4, "Isaiah", date });
-
-            List<Booking> expected_bookings = new List<Booking>();
-            expected_bookings.Add(new Booking(3, date, "Chris"));
-            expected_bookings.Add(new Booking(4, date, "Isaiah"));
-
-            mock_context.Setup(x => x.ExecuteDataQueryCommand(It.IsAny<string>(),
-                It.IsAny<Dictionary<string, object>>(),
-                out It.Ref<string>.IsAny))
-                .Returns(mock_bookings_table);
-
-            // Act
-            var result = Booking_db.getBookingsByHour(
-                date,
-                mock_context.Object);
-
-            // Assert
-            Assert.That(result, Has.Count.EqualTo(expected_bookings.Count));
-        }
-
-        [Test] // TC 8
-        public void getCollection_ExpectedBehavior()
-        {
-            // Arrange
-            DateTime date = default(global::System.DateTime);
-
-            mock_bookings_table.Rows.Add(new Object[] { 3, "Chris", date });
-            mock_bookings_table.Rows.Add(new Object[] { 4, "Isaiah", date });
-
-            List<Booking> expected_bookings = new List<Booking>();
-            expected_bookings.Add(new Booking(3, date, "Chris"));
-            expected_bookings.Add(new Booking(4, date, "Isaiah"));
-
-            mock_context.Setup(x => x.ExecuteDataQueryCommand(It.IsAny<string>(),
-                It.IsAny<Dictionary<string, object>>(),
-                out It.Ref<string>.IsAny))
-                .Returns(mock_bookings_table);
-
-            // Act
-            var result = Booking_db.getBookingsByHour(
-                date,
-                mock_context.Object);
-
-            // Assert
-            Assert.That(result, Has.Count.EqualTo(expected_bookings.Count));
-        }
-
-        [Test] // TC 9
         public void getBookingById_ExpectedBehavior()
         {
             // Arrange
             DateTime date = default(global::System.DateTime);
 
             mock_bookings_table.Rows.Add(new Object[] { 3, "Chris", date });
-            mock_bookings_table.Rows.Add(new Object[] { 4, "Isaiah", date });
 
             List<Booking> expected_bookings = new List<Booking>();
             expected_bookings.Add(new Booking(3, date, "Chris"));
-            expected_bookings.Add(new Booking(4, date, "Isaiah"));
 
             mock_context.Setup(x => x.ExecuteDataQueryCommand(It.IsAny<string>(),
                 It.IsAny<Dictionary<string, object>>(),
@@ -214,15 +158,16 @@ namespace Webservice.Tests.DatabaseHelper
                 .Returns(mock_bookings_table);
 
             // Act
-            var result = Booking_db.getBookingsByHour(
-                date,
-                mock_context.Object);
+            var result = Booking_db.getBookingById(
+                3,
+                mock_context.Object,
+                out StatusResponse response);
 
             // Assert
             Assert.That(result, Has.Count.EqualTo(expected_bookings.Count));
         }
 
-        [Test] // TC 10
+        [Test] // TC 8
         public void getCollection_ExpectedBehavior1()
         {
             // Arrange
@@ -241,8 +186,8 @@ namespace Webservice.Tests.DatabaseHelper
                 .Returns(mock_bookings_table);
 
             // Act
-            var result = Booking_db.getBookingsByHour(
-                date,
+            var result = Booking_db.getCollection(
+                "Chris",
                 mock_context.Object);
 
             // Assert
