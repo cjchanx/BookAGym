@@ -10,11 +10,6 @@ namespace Webservice.Models
     {
         #region Constructors
         /// <summary>
-        /// Default constructor for serialization.
-        /// </summary>
-        public Booking() { }
-
-        /// <summary>
         /// Account constructor with parameters.
         /// </summary>
         /// <param name="time"></param>

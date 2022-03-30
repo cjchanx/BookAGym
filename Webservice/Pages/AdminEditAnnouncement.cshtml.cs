@@ -26,7 +26,15 @@ namespace Webservice.Pages
             UpdateAnnoucement.Id = @announcement.Id;
             UpdateAnnoucement.Header = @announcement.Header;
             UpdateAnnoucement.Comment = @announcement.Comment;
-            return null;
+            if (HttpContext.Session.GetString("AccountName") != "Admin")
+            {
+                Console.WriteLine("Not logged in");
+                return RedirectToPage("/Home");
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public IActionResult OnPost()

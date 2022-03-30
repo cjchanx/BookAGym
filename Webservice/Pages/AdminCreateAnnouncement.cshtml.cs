@@ -18,6 +18,17 @@ namespace Webservice.Pages
         [BindProperty]
         public CreateAnnouncement CreateAnnouncement { get; set; }
 
+        public IActionResult onGet() {
+            if (HttpContext.Session.GetString("AccountName") != "Admin")
+            {
+                Console.WriteLine("Not logged in");
+                return RedirectToPage("/Home");
+            }
+            else
+            {
+                return null;
+            }
+        }
         public IActionResult OnPost()
         {
             Announcement_db.AddAnnouncement(CreateAnnouncement.Header, CreateAnnouncement.Comment, _context.DBContext);

@@ -2,7 +2,7 @@
 @using Webservice.DatabaseHelper
 @using Webservice.ContextHelpers
 @inject DatabaseContextHelper context
-@model Webservice.Pages.HomeModel
+@model Webservice.Pages.AnnoucementsModel
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -39,7 +39,7 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
 
-            <a class="navbar-brand" href="index.html">BookAGYM</a>
+            <a class="navbar-brand" href="Home">BookAGYM</a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -51,11 +51,14 @@
                     <li class="nav-item">
                         <a asp-page="/ClientPage" class="nav-link smoothScroll">Home</a>
                     </li>
-
-                    <li class="nav-item">
-                        <a href="#about" class="nav-link smoothScroll">Book An Appointment</a>
-                    </li>
-
+                    @{
+                    if (@name != "-1")
+                        {
+                        <li class="nav-item">
+                            <a asp-page="BookingPage" class="nav-link smoothScroll">Book An Appointment</a>
+                        </li>
+                        }
+                    }
                     <li class="nav-item">
                         <a asp-page="/Annoucements" class="nav-link smoothScroll">Annoucements</a>
                     </li>
@@ -63,7 +66,24 @@
                     <li class="nav-item">
                         <a href="#schedule" class="nav-link smoothScroll">About Us</a>
                     </li>
-                        <text class="btn custom-btn mt-3">@name</text>
+                    @{
+                        if (@name == "-1")
+                        {
+                            <li class="nav-item">
+                        <a asp-page="/Login" class="nav-link smoothScroll">Login</a>
+                    </li>
+                        }
+                        else { 
+                          <li class="nav-item">
+                        <a href="#name" class="nav-link smoothScroll">@name</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a asp-page="/Home" class="nav-link smoothScroll">Logout</a>
+                    </li>
+                        }
+                    }
+
                     <li class="nav-item">
                         
                     </li>

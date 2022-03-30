@@ -25,7 +25,15 @@ namespace Webservice.Pages
             UpdateAdminAccount = new UpdateAdminAccount();
             UpdateAdminAccount.UserName = @user.UserName;
             UpdateAdminAccount.Password = @user.Password;
-            return null;
+            if (HttpContext.Session.GetString("AccountName") != "Admin")
+            {
+                Console.WriteLine("Not logged in");
+                return RedirectToPage("/Home");
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public IActionResult OnPost() {
