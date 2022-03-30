@@ -2,26 +2,26 @@
   "id": "d08c898c-009d-447b-a227-fcea57befd2d",
   "version": "2.0",
   "name": "401",
-  "url": "https://localhost/",
+  "url": "http://35.225.88.69/",
   "tests": [{
     "id": "07e80b0a-bdca-4eb1-9e2c-7b342e21f6bc",
     "name": "Login&Book&Cancel",
     "commands": [{
-      "id": "aad3fac1-13fc-4647-8264-4fbb6a4c08ca",
+      "id": "f211b98e-d924-4940-9c0b-83b0a62f5aa1",
       "comment": "",
       "command": "open",
       "target": "/",
       "targets": [],
       "value": ""
     }, {
-      "id": "17e0b375-9e54-47e5-a393-17ab118e1e8a",
+      "id": "47265984-a00a-4560-ace2-9bffdecef896",
       "comment": "",
       "command": "setWindowSize",
       "target": "2576x1408",
       "targets": [],
       "value": ""
     }, {
-      "id": "53f07b4f-635c-42d6-8997-2bd3fead0107",
+      "id": "fb20be8f-e779-460e-a952-5120a43c552d",
       "comment": "",
       "command": "click",
       "target": "css=.nav-item:nth-child(4) > .nav-link",
@@ -34,7 +34,7 @@
       ],
       "value": ""
     }, {
-      "id": "816a83a8-feb6-4def-b1df-6575a4523f2c",
+      "id": "c1006b9f-31e1-44d5-97b3-042666982e28",
       "comment": "",
       "command": "click",
       "target": "id=Credential_Username",
@@ -47,7 +47,7 @@
       ],
       "value": ""
     }, {
-      "id": "54712cfc-ee70-4581-b580-76c71c3d6724",
+      "id": "9a16c362-e190-4731-8193-c7befb3a591f",
       "comment": "",
       "command": "type",
       "target": "id=Credential_Username",
@@ -58,9 +58,22 @@
         ["xpath=//input[@id='Credential_Username']", "xpath:attributes"],
         ["xpath=//input", "xpath:position"]
       ],
-      "value": "Neeraj"
+      "value": "Sean"
     }, {
-      "id": "03a90ef8-8236-446a-9ec4-2dad2f01ea63",
+      "id": "70d7edb5-ba58-4be9-a406-6cec0f90eff2",
+      "comment": "",
+      "command": "click",
+      "target": "id=Credential_Password",
+      "targets": [
+        ["id=Credential_Password", "id"],
+        ["name=Credential.Password", "name"],
+        ["css=#Credential_Password", "css:finder"],
+        ["xpath=//input[@id='Credential_Password']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8c5e664a-f7d7-4ff8-834d-42f0504c714b",
       "comment": "",
       "command": "type",
       "target": "id=Credential_Password",
@@ -71,9 +84,9 @@
         ["xpath=//input[@id='Credential_Password']", "xpath:attributes"],
         ["xpath=//div[2]/input", "xpath:position"]
       ],
-      "value": "newpassword"
+      "value": "password"
     }, {
-      "id": "b748b6bb-db7f-4f35-9fc5-c79008dd10be",
+      "id": "8fb6890e-feab-4686-9ac2-1b38e57c3840",
       "comment": "",
       "command": "click",
       "target": "css=.login100-form-btn",
@@ -84,7 +97,7 @@
       ],
       "value": ""
     }, {
-      "id": "da2e55e4-2b17-49e2-960f-49e076053eab",
+      "id": "a7c91217-9e3b-49bd-8315-b58d14d53e26",
       "comment": "",
       "command": "click",
       "target": "css=.nav-item:nth-child(2) > .nav-link",
@@ -97,7 +110,7 @@
       ],
       "value": ""
     }, {
-      "id": "98dd3afa-4861-4025-9784-4307e207e003",
+      "id": "e8aaabc6-7c15-4599-ac12-ca14b24c23d1",
       "comment": "",
       "command": "click",
       "target": "linkText=Book",
@@ -110,28 +123,7 @@
       ],
       "value": ""
     }, {
-      "id": "414c174e-9f0c-4101-8f84-a941d8b21f5d",
-      "comment": "",
-      "command": "click",
-      "target": "id=DateUserSelected_Time",
-      "targets": [
-        ["id=DateUserSelected_Time", "id"],
-        ["name=DateUserSelected.Time", "name"],
-        ["css=#DateUserSelected_Time", "css:finder"],
-        ["xpath=//select[@id='DateUserSelected_Time']", "xpath:attributes"],
-        ["xpath=//select", "xpath:position"],
-        ["xpath=//select[contains(.,'12 AM : 10\n1 AM : 9\n2 AM : 10\n3 AM : 10\n4 AM : 10\n5 AM : 10\n6 AM : 10\n7 AM : 10\n8 AM : 10\n9 AM : 10\n10 AM : 10\n11 AM : 10\n12 PM : 10\n1 PM : 10\n2 PM : 10\n3 PM : 10\n4 PM : 10\n5 PM : 10\n6 PM : 10\n7 PM : 10\n8 PM : 10\n9 PM : 10\n10 PM : 10\n11 PM : 10')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "079fa8d2-e216-4b5c-8d3f-bfa40d7066d8",
-      "comment": "",
-      "command": "select",
-      "target": "id=DateUserSelected_Time",
-      "targets": [],
-      "value": "label=3 PM : 10"
-    }, {
-      "id": "15a5e8b1-f030-432a-a8dd-c5fa5e3809e5",
+      "id": "dcdc418e-f436-4a88-a71b-9c83a710912c",
       "comment": "",
       "command": "click",
       "target": "id=StartDate",
@@ -144,7 +136,7 @@
       ],
       "value": ""
     }, {
-      "id": "81d5530f-1525-4c7f-92db-f8045d9e2ea0",
+      "id": "5d4dab06-2d90-406c-ac7f-052aa15583f5",
       "comment": "",
       "command": "type",
       "target": "id=StartDate",
@@ -155,9 +147,30 @@
         ["xpath=//input[@id='StartDate']", "xpath:attributes"],
         ["xpath=//input", "xpath:position"]
       ],
-      "value": "2022-03-30"
+      "value": "2022-05-04"
     }, {
-      "id": "ee4cee7a-1858-43f1-9445-ac37fba28f76",
+      "id": "ad699c70-7c3e-4acc-af09-b0df02cf39eb",
+      "comment": "",
+      "command": "click",
+      "target": "id=DateUserSelected_Time",
+      "targets": [
+        ["id=DateUserSelected_Time", "id"],
+        ["name=DateUserSelected.Time", "name"],
+        ["css=#DateUserSelected_Time", "css:finder"],
+        ["xpath=//select[@id='DateUserSelected_Time']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"],
+        ["xpath=//select[contains(.,'12 AM : 10\n1 AM : 10\n2 AM : 10\n3 AM : 10\n4 AM : 10\n5 AM : 10\n6 AM : 10\n7 AM : 10\n8 AM : 10\n9 AM : 10\n10 AM : 10\n11 AM : 10\n12 PM : 10\n1 PM : 10\n2 PM : 10\n3 PM : 10\n4 PM : 10\n5 PM : 10\n6 PM : 10\n7 PM : 10\n8 PM : 10\n9 PM : 10\n10 PM : 10\n11 PM : 10')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "213aaa65-6e46-45d6-aad0-8cd0f488c314",
+      "comment": "",
+      "command": "waitForElementEditable",
+      "target": "id=DateUserSelected_Time",
+      "targets": [],
+      "value": "3000"
+    }, {
+      "id": "3b3e7add-86e5-40a8-adfc-5a65c319b222",
       "comment": "",
       "command": "click",
       "target": "css=.login100-form-btn",
@@ -168,20 +181,7 @@
       ],
       "value": ""
     }, {
-      "id": "0c0600ae-d128-4a5b-ae7e-92ae4c809d94",
-      "comment": "",
-      "command": "click",
-      "target": "css=tr:nth-child(6) a",
-      "targets": [
-        ["css=tr:nth-child(6) a", "css:finder"],
-        ["xpath=(//a[contains(text(),'Cancel')])[5]", "xpath:link"],
-        ["xpath=(//a[@type='submit'])[5]", "xpath:attributes"],
-        ["xpath=//a[contains(@href, '/BookingPageModel/Cancel/16')]", "xpath:href"],
-        ["xpath=//tr[6]/td[4]/a", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "ad14b214-2188-47ab-a688-aaf671edc50e",
+      "id": "1dd749f4-4012-406e-b1db-ead7bc991b0a",
       "comment": "",
       "command": "close",
       "target": "",
@@ -219,19 +219,7 @@
       ],
       "value": ""
     }, {
-      "id": "d6905a5b-07d7-4325-8136-9d7615c7c735",
-      "comment": "",
-      "command": "assertText",
-      "target": "css=.announcement:nth-child(2) > h2",
-      "targets": [
-        ["css=.announcement:nth-child(2) > h2", "css:finder"],
-        ["xpath=//section[@id='contact']/div/div/div/div/h2", "xpath:idRelative"],
-        ["xpath=//div/div/div/div/h2", "xpath:position"],
-        ["xpath=//h2[contains(.,'New announcement')]", "xpath:innerText"]
-      ],
-      "value": "New announcement"
-    }, {
-      "id": "db04feef-514d-48ce-8fe9-c50814918963",
+      "id": "86b27f5a-2fc9-49fb-89e3-db56120dd8fa",
       "comment": "",
       "command": "close",
       "target": "",
@@ -308,16 +296,18 @@
       ],
       "value": "Admin@123"
     }, {
-      "id": "e197ed8b-9d39-4971-a333-9b1c691e6943",
+      "id": "3072c350-4f4d-4c7f-b1f5-11aab4a7960a",
       "comment": "",
-      "command": "click",
-      "target": "css=.login100-form-btn",
+      "command": "sendKeys",
+      "target": "id=Credential_Password",
       "targets": [
-        ["css=.login100-form-btn", "css:finder"],
-        ["xpath=//input[@value='Login']", "xpath:attributes"],
-        ["xpath=//div[3]/input", "xpath:position"]
+        ["id=Credential_Password", "id"],
+        ["name=Credential.Password", "name"],
+        ["css=#Credential_Password", "css:finder"],
+        ["xpath=//input[@id='Credential_Password']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
       ],
-      "value": ""
+      "value": "${KEY_ENTER}"
     }, {
       "id": "77a10417-3b9f-4bc5-9784-ed93d4ad8536",
       "comment": "",
@@ -410,7 +400,7 @@
       ],
       "value": ""
     }, {
-      "id": "d3c95019-643f-4f18-9eeb-ec1fabc6c617",
+      "id": "9f4d8e8c-ab29-4e22-8ae8-78777b48ad70",
       "comment": "",
       "command": "close",
       "target": "",
@@ -500,17 +490,6 @@
       ],
       "value": "${KEY_ENTER}"
     }, {
-      "id": "908d02ec-1124-4758-9b76-ad38395508e3",
-      "comment": "",
-      "command": "click",
-      "target": "css=.login100-form-btn",
-      "targets": [
-        ["css=.login100-form-btn", "css:finder"],
-        ["xpath=//input[@value='Login']", "xpath:attributes"],
-        ["xpath=//div[3]/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
       "id": "bdf08720-3132-455f-b8d1-40116d9c347a",
       "comment": "",
       "command": "click",
@@ -540,7 +519,7 @@
       ],
       "value": ""
     }, {
-      "id": "802b6c20-23b0-4b16-bf28-739f79f48e06",
+      "id": "7b54b866-5387-4b23-9601-a0b7ab058877",
       "comment": "",
       "command": "close",
       "target": "",
@@ -556,6 +535,6 @@
     "timeout": 300,
     "tests": ["07e80b0a-bdca-4eb1-9e2c-7b342e21f6bc"]
   }],
-  "urls": ["http://35.225.88.69/", "https://localhost/"],
+  "urls": ["http://35.225.88.69/"],
   "plugins": []
 }
