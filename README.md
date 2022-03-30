@@ -10,6 +10,9 @@ The following contains instructions for accessing NUnit tests and GUI tests.
 - **NUnit Testing** - The NUnit tests have been included under the Webservice.Tests project and can be run as a test suite using Visual Studio 2022.
 - **Selenium Testing** - GUI tests have been included as the **401_GUI_tests.side** file inside root folder.
 
+# Database Connection
+The project has a temporary database linked to it with the access credentials. Should the database be down or gets corrupted, the database may be redeployed using the **GymDB.sql** file located in the root. The file contains a dump of the MySQL database as of March 29th, 2022.
+
 # Build and Development Instructions
 
 To run the project, open BookAGym.sln inside Visual Studio 2022 (for compatibility with ASP.NET CORE 6). Press the continue buttons from the top to compile and run the program. A webpage will be available under https://localhost:443 which links to the project.
