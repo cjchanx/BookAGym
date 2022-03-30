@@ -19,7 +19,7 @@ public class DatabaseTest
 
     }
 
-    [Test]
+    [Test] // TC 1
     public void TestDBConnects()
     {
         // Manually generate connection

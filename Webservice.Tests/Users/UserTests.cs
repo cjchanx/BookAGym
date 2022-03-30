@@ -1,12 +1,9 @@
 using NUnit.Framework;
-
-// User imports
-using Webservice.DatabaseHelper;
-using Webservice.ContextHelpers;
-using Webservice.Providers;
-using Webservice.Core;
-using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
 using System.Data;
+// User imports
+using Webservice.Core;
 
 namespace Webservice.Tests;
 
@@ -31,9 +28,33 @@ public class UserTests
     }
 
 
-    [Test]
+    [Test] // TC 2
     public void TestAdminExists()
     {
+        // Setup
+        string username = "Admin";
+        string expected_password = "Admin@123";
+
+        try
+        {
+            DataTable table = context.ExecuteDataQueryCommand(
+                commandText: "SELECT Password FROM Users WHERE `UserName` = @username",
+                parameters: new Dictionary<string, object>
+                {
+                        {"@username", username},
+                },
+                message: out string sql
+                );
+
+
+            // Assert that admin exists and password matches
+            Assert.That(table.Rows, Has.Count.EqualTo(1));
+            Assert.That(table.Rows[0]["Password"], Is.EqualTo(expected_password));
+        }
+        catch (Exception ex)
+        {
+            Assert.Fail(ex.Message);
+        }
 
     }
 }
