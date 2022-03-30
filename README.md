@@ -15,7 +15,7 @@ The project has a temporary database linked to it with the access credentials. S
 
 # Build and Development Instructions
 
-To run the project, open BookAGym.sln inside Visual Studio 2022 (for compatibility with ASP.NET CORE 6). Press the continue buttons from the top to compile and run the program. A webpage will be available under https://localhost:443 which links to the project.
+To run the project, open BookAGym.sln inside Visual Studio 2022 (for compatibility with ASP.NET CORE 6). Press the continue buttons from the top to compile and run the program. A webpage will be available under https://localhost:443 or http://localhost:80 which links to the project.
 
 In order to ensure a connection to a properly configured database, setup a database using the GymDB.sql file. Once the database is setup, point to it inside Webservice/appsettings.json inside the connection string in the following format
 ```
@@ -46,7 +46,3 @@ For internal dependencies, right click Dependencies for a particular project and
 
 # Providers Information
 Currently implemented for a MySQL database with extensible support for other databases possible.
-
-# API Information
-Following is sample API calls and basic documentation
-
