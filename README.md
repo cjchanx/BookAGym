@@ -1,7 +1,18 @@
 # BookAGym
 Gym Management and Booking Project.
 
-To run the project, open BookAGym.sln inside Visual Studio 2022 (for compatibility with ASP.NET CORE 6). Press the continue buttons from the top to compile and run the program. A webpage will be available under https://localhost:7182 which links to the project.
+# Deployed Website
+The website has been deployed on and can be accessed by the following server IP.
+http://35.225.88.69/
+
+# Testing
+The following contains instructions for accessing NUnit tests and GUI tests.
+- **NUnit Testing** - The NUnit tests have been included under the Webservice.Tests project and can be run as a test suite using Visual Studio 2022.
+- **Selenium Testing** - GUI tests have been included as the **401_GUI_tests.side** file inside root folder.
+
+# Build and Development Instructions
+
+To run the project, open BookAGym.sln inside Visual Studio 2022 (for compatibility with ASP.NET CORE 6). Press the continue buttons from the top to compile and run the program. A webpage will be available under https://localhost:443 which links to the project.
 
 In order to ensure a connection to a properly configured database, setup a database using the GymDB.sql file. Once the database is setup, point to it inside Webservice/appsettings.json inside the connection string in the following format
 ```
@@ -29,12 +40,6 @@ Testing Dependencies
 - **Selenium** : Web Driver for GUI Based Unit Testing
 
 For internal dependencies, right click Dependencies for a particular project and add the required dependencies.
-
-# Backend Information
-The following section includes important information and general guidelines for contributing to this project's backend.
-
-# Frontend Information
-The following section includes important information and general guidelines for contributing to this project's frontend.
 
 # Providers Information
 Currently implemented for a MySQL database with extensible support for other databases possible.
