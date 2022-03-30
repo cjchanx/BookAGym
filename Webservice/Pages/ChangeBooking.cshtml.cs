@@ -34,31 +34,31 @@ namespace Webservice.Pages
             DateUserChange.NewDate = DateTime.Parse(HttpContext.Session.GetString("SelectedDate"));
 
             int available_booking = 0;
-
+            DateTime now = DateTime.Now;
             DateTime temp = DateUserChange.NewDate;
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "12 AM : " + available_booking, Value = temp.ToString() });
             }
             temp = temp.AddHours(1);
 
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "1 AM : " + available_booking, Value = temp.ToString() });
             }
             temp = temp.AddHours(1);
 
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "2 AM : " + available_booking, Value = temp.ToString() });
             }
             temp = temp.AddHours(1);
 
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "3 AM : " + available_booking, Value = temp.ToString() });
             }
@@ -66,139 +66,139 @@ namespace Webservice.Pages
             temp = temp.AddHours(1);
 
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "4 AM : " + available_booking, Value = temp.ToString() });
             }
             temp = temp.AddHours(1);
 
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "5 AM : " + available_booking, Value = temp.ToString() });
             }
             temp = temp.AddHours(1);
 
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "6 AM : " + available_booking, Value = temp.ToString() });
             }
             temp = temp.AddHours(1);
 
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "7 AM : " + available_booking, Value = temp.ToString() });
             }
             temp = temp.AddHours(1);
 
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "8 AM : " + available_booking, Value = temp.ToString() });
             }
             temp = temp.AddHours(1);
 
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "9 AM : " + available_booking, Value = temp.ToString() });
             }
             temp = temp.AddHours(1);
 
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "10 AM : " + available_booking, Value = temp.ToString() });
             }
             temp = temp.AddHours(1);
 
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "11 AM : " + available_booking, Value = temp.ToString() });
             }
             temp = temp.AddHours(1);
 
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "12 PM : " + available_booking, Value = temp.ToString() });
             }
             temp = temp.AddHours(1);
 
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "1 PM : " + available_booking, Value = temp.ToString() });
             }
             temp = temp.AddHours(1);
 
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "2 PM : " + available_booking, Value = temp.ToString() });
             }
             temp = temp.AddHours(1);
 
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "3 PM : " + available_booking, Value = temp.ToString() });
             }
             temp = temp.AddHours(1);
 
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "4 PM : " + available_booking, Value = temp.ToString() });
             }
             temp = temp.AddHours(1);
 
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "5 PM : " + available_booking, Value = temp.ToString() });
             }
             temp = temp.AddHours(1);
 
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "6 PM : " + available_booking, Value = temp.ToString() });
             }
             temp = temp.AddHours(1);
 
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "7 PM : " + available_booking, Value = temp.ToString() });
             }
             temp = temp.AddHours(1);
 
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "8 PM : " + available_booking, Value = temp.ToString() });
             }
             temp = temp.AddHours(1);
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "9 PM : " + available_booking, Value = temp.ToString() });
             }
             temp = temp.AddHours(1);
 
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "10 PM : " + available_booking, Value = temp.ToString() });
             }
             temp = temp.AddHours(1);
 
             available_booking = Booking_db.bookingsAvailable(temp, _context.DBContext);
-            if (available_booking > 0)
+            if (available_booking > 0 && now <= temp)
             {
                 Times.Add(new SelectListItem { Text = "11 PM : " + available_booking, Value = temp.ToString() });
             }
@@ -217,8 +217,15 @@ namespace Webservice.Pages
             Console.WriteLine(DateUserChange.CurrentSelection);
             Console.WriteLine(DateTime.Parse(DateUserChange.NewTime));
             Console.WriteLine(HttpContext.Session.GetString("AccountName"));
-            Booking_db.Update(int.Parse(DateUserChange.CurrentSelection), DateTime.Parse(DateUserChange.NewTime), _context.DBContext);
-            return RedirectToPage("/BookingPage");
+            if (DateUserChange.NewTime != null)
+            {
+                Booking_db.Update(int.Parse(DateUserChange.CurrentSelection), DateTime.Parse(DateUserChange.NewTime), _context.DBContext);
+                return RedirectToPage("/BookingPage");
+            }
+            else {
+                return RedirectToPage("/ChangeBooking");
+            }
+               
         }
     }
 
