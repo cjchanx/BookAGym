@@ -1,10 +1,6 @@
 # BookAGym
 Gym Management and Booking Project.
 
-# Deployed Website
-The website has been deployed on and can be accessed by the following server IP.
-http://35.225.88.69/
-
 # Testing
 The following contains instructions for accessing NUnit tests and GUI tests.
 - **NUnit Testing** - The NUnit tests have been included under the Webservice.Tests project and can be run as a test suite using Visual Studio 2022.
